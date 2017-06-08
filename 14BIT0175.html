@@ -1,0 +1,147 @@
+<!Doctype HTML>
+<html>
+<head>
+<title>Registration Page</title>
+<script>
+function formvalidation()
+{
+var nm=document.myform.n;
+var el=document.myform.e;
+var a=document.myform.m;
+var g=document.myform;
+
+
+if(validateName(nm,3,14))
+{
+if(validatephone(a))
+{
+if(validateEmail(el))
+{
+if(validateradio(g))
+{
+}
+}
+}
+}
+return false;
+}
+function validateName(n,mi,mx)
+{
+var nm_len=n.value.length;
+if(nm_len ==0 || nm_len>=mx ||nm_len<mi)
+{
+alert("Name should not be empty / length be between "+mi+" to "+mx );
+n.focus();
+return false;
+}
+return true;
+}
+function validateradio(g)
+{
+ if ( ( g.GEN[0].checked == false ) && ( g.GEN[1].checked == false ) ) 
+{
+alert ( "Please choose your Gender: Male or Female" ); 
+return false;
+g.focus();
+}
+else
+    return true;
+
+}
+
+function validateEmail(el)
+{
+var emailvalidate =/^[a-z A-z 0-9 ._]+@[a-z A-Z 0-9]+\.[a-z A-Z]{3}$/;
+if(el.value.match(emailvalidate))
+{return true;
+}
+else
+{
+alert("Invalid email");
+el.focus();
+return false;
+}
+}
+function validatephone(a)
+{
+var phvalidat =/^[0-9]{10}$/;
+if(a.value.match(phvalidat))
+{
+return true;
+}
+else
+{
+alert("wrong phone");
+a.focus();
+return false;
+}
+}
+
+
+</script> 
+
+<style >
+h1{
+	margin-top:0px;
+	color:red;
+	padding-top: 10px;
+}
+	body{
+		background-image: url("bg.png");
+		background-repeat: no-repeat;
+	}
+        button{
+           background-color: greenyellow; 
+        }
+.form{
+	border:3px solid black;
+	margin:110px 500px;
+	padding:10px;
+	background-color:white;
+	
+	color: #0000ff;
+}
+input{
+	background-color: yellow;
+}
+</style>
+</head>
+ 
+
+<body>
+<h1 align="center">Register Here!!!</h1>
+<div class="1" style="background:rgba(2,2,2,0.6); height: 90px;margin-top:-70px;margin-left: -10px;margin-right: -10px;">	  
+<a  href="http://localhost/database/"><img src="homeparty.jpg"  style="height:70px; width:20% ; margin:10px 40px; float: left;"/></a> </div>
+<div class="form">
+<form name="myform" action="signup.php" method="POST">
+<table align="center">
+<tr>
+<td><label>Name:</label></td>
+<td><input type="text" name="n" autofocus placeholder="eg.:John Smith"></td>
+</tr>
+<tr>
+
+<td><label> Mobile No.:</label></td>
+<td><input type="text" name="m" placeholder="94xxxxxxxx" ></td>
+</tr>
+<tr>
+<td><label> Email id:</label></td>
+<td><input type="text" name="e" placeholder="some@example.com" ></td>
+</tr>
+<tr><td><label>Gender:</label></td>
+<td><input type="radio" name="GEN" value="male">Male
+<input type="radio" name="GEN" value="female">Female</td>
+</tr>
+<tr>
+
+<td><button type="button" onclick="formvalidation()">Check</button></td>
+</tr>
+<tr>
+<td><input type="reset" name="reset" align="center"></td>
+<td><input type="submit" name="submit" id="sub" ></td>
+</tr>
+</table>
+</form>
+</div>
+</body>
+</html>
